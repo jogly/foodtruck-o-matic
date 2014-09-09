@@ -13,3 +13,6 @@ man/
 
 #Sphinx
 docs/build
+
+#Sublime
+*workspace
