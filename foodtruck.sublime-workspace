@@ -1,0 +1,512 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"aw",
+				"aws_secret_access_key"
+			],
+			[
+				"aws",
+				"aws_cfg"
+			],
+			[
+				"ec2",
+				"ec2.ResponseError"
+			],
+			[
+				"key",
+				"key_dir"
+			],
+			[
+				"ke",
+				"key_dir"
+			],
+			[
+				"displ",
+				"display.contentWidth"
+			],
+			[
+				"refe",
+				"referenceY"
+			],
+			[
+				"ref",
+				"referenceY"
+			],
+			[
+				"display.con",
+				"display.contentHeight"
+			],
+			[
+				"HILI",
+				"HILITE_CATEGORY_BIT"
+			],
+			[
+				"tran",
+				"transition.to()	transition"
+			],
+			[
+				"remove",
+				"removeSelf()	DisplayObject"
+			],
+			[
+				"local",
+				"localToContent()	DisplayObject"
+			],
+			[
+				"hlInfo.or",
+				"hlInfo.origY"
+			],
+			[
+				"S",
+				"STAR_GROUP"
+			],
+			[
+				"timer.p",
+				"timer.performWithDelay()	timer"
+			],
+			[
+				"STAR",
+				"STAR_COLLIDE_BITS"
+			],
+			[
+				"star_",
+				"STAR_COLLIDE_MAKS"
+			],
+			[
+				"object.ori",
+				"object.origY"
+			],
+			[
+				"obj",
+				"object.y"
+			],
+			[
+				"ob",
+				"object.x"
+			],
+			[
+				"hi",
+				"HILITE_SIZE"
+			],
+			[
+				"stroke",
+				"strokeWidth	ShapeObject"
+			],
+			[
+				"object.",
+				"object.scaleY"
+			],
+			[
+				"orig",
+				"origScaleY"
+			],
+			[
+				"object.sc",
+				"object.scaleX"
+			],
+			[
+				"trans",
+				"transition.moveBy()	transition"
+			],
+			[
+				"star",
+				"STAR_STANDARD_SIZE"
+			],
+			[
+				"del",
+				"deltaY"
+			],
+			[
+				"refer",
+				"referenceY"
+			],
+			[
+				"re",
+				"referenceY"
+			],
+			[
+				"refere",
+				"referenceX"
+			],
+			[
+				"transition.move",
+				"transition.moveTo()	transition"
+			],
+			[
+				"transition.mo",
+				"transition.moveTo()	transition"
+			],
+			[
+				"tap",
+				"tapCollision"
+			],
+			[
+				"add",
+				"addEventListener()	EventListener"
+			],
+			[
+				"init",
+				"initialColor"
+			],
+			[
+				"random",
+				"randomFlickerTimer"
+			],
+			[
+				"color",
+				"colorShift"
+			],
+			[
+				"sorte",
+				"sorted_record"
+			],
+			[
+				"list",
+				"list_of_values"
+			],
+			[
+				"wo",
+				"wotio_sub"
+			],
+			[
+				"sent",
+				"sentiment"
+			],
+			[
+				"not",
+				"not_in_filter_fn"
+			],
+			[
+				"twee",
+				"tweet_sentiment"
+			],
+			[
+				"tweet",
+				"tweet_sentiments"
+			],
+			[
+				"parse_",
+				"parse_sentiment_scores"
+			],
+			[
+				"word",
+				"word_map_fn"
+			],
+			[
+				"sent_",
+				"sent_scores"
+			],
+			[
+				"mon",
+				"mongodbURL"
+			],
+			[
+				"getC",
+				"getCursorPos"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 374.0,
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"INSTA",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"INSTAL",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"coro",
+				"Set Syntax: Corona SDK Lua"
+			],
+			[
+				"cor",
+				"Set Syntax: Corona SDK Lua"
+			],
+			[
+				"coron",
+				"Set Syntax: Corona SDK Lua"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"set lu",
+				"Set Syntax: Lua"
+			]
+		],
+		"width": 417.0
+	},
+	"console":
+	{
+		"height": 114.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/joma/Projects/foodtruck"
+	],
+	"file_history":
+	[
+		"/Users/joma/Projects/foodtruck/untitled.sublime-project",
+		"/Users/joma/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/joma/Projects/djangotest/djangotest/settings/__init__.py",
+		"/Users/joma/Projects/djangotest/fabfile.py",
+		"/Users/joma/Projects/django-test/requirements.txt",
+		"/Users/joma/Projects/django-test/aws.cfg",
+		"/Users/joma/Projects/django-test/fabfile.py",
+		"/Users/joma/Projects/django-test/mysite/mysite/settings.py",
+		"/Users/joma/Projects/django-test/mysite/manage.py",
+		"/Users/joma/Projects/corona_test/main.lua",
+		"/Users/joma/Projects/corona_test/star_scene.lua",
+		"/Users/joma/Projects/corona_test/hilite.lua",
+		"/Users/joma/Projects/corona_test/utility.lua",
+		"/Users/joma/Projects/corona_test/star.lua",
+		"/Users/joma/Projects/corona_test/ship.lua",
+		"/Users/joma/Projects/corona_test/proxy.lua",
+		"/Users/joma/Projects/corona_test/display_group.lua",
+		"/Users/joma/Projects/corona_test/config.lua",
+		"/Users/joma/Projects/corona_test/build.settings",
+		"/Users/joma/Projects/corona_test/corona_test.sublime-project",
+		"/Users/joma/Library/Application Support/Sublime Text 3/Packages/Corona Editor/README.md",
+		"/Users/joma/Projects/datasci/assignment3/friend_count.py",
+		"/Users/joma/Projects/datasci/assignment3/asymmetric_friendships.py",
+		"/Users/joma/Projects/datasci/assignment3/unique_trims.py",
+		"/Users/joma/Projects/datasci/assignment3/multiply.py",
+		"/Users/joma/Projects/datasci/assignment4/example.pig",
+		"/Users/joma/Projects/wotio/node-red-contrib-wotio/wotio/wotio_sub.js",
+		"/Users/joma/Projects/wotio/node-red-contrib-wotio/wotio/wotio_sub.html",
+		"/Users/joma/Projects/wotio/node-red-contrib-wotio/package.json",
+		"/Users/joma/Projects/wotio/untitled.sublime-project",
+		"/Users/joma/Projects/wotio/bluemix-nodered-app/couchstorage.js",
+		"/Users/joma/Projects/wotio/bluemix-nodered-app/nodes/README.md",
+		"/Users/joma/Projects/wotio/bluemix-nodered-app/package.json",
+		"/Users/joma/Projects/wotio/bluemix-nodered-app/public/index.html",
+		"/Users/joma/Projects/wotio/nodered-backend/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/insert_command.js",
+		"/Users/joma/Projects/wotio/bluemix-nodered-app/nodes/iotcloud/67-iotcloud-cf.js",
+		"/Users/joma/Projects/wotio/bluemix-nodered-app/nodes/mongo/66-mongodb-cf.js",
+		"/Users/joma/Projects/wotio/nodered-backend/backend.js",
+		"/Users/joma/Projects/datasci/assignment1/tweet_sentiment.py",
+		"/Users/joma/Projects/datasci/assignment1/term_sentiment.py",
+		"/Users/joma/Projects/datasci/assignment1/frequency.py",
+		"/Users/joma/Projects/wotio/bluemix-nodered-app/bluemix-settings.js",
+		"/Users/joma/Projects/datasci/assignment1/assignment1.html",
+		"/Users/joma/Projects/wotio/nodered-backend/models/messages.js",
+		"/Users/joma/Projects/wotio/nodered-backend/messages.js",
+		"/Users/joma/Projects/wotio/nodered-backend/mongoose-connect.js",
+		"/Users/joma/Projects/wotio/nodered-backend/configs.js",
+		"/Users/joma/Projects/wotio/nodered-backend/creds/creds.js",
+		"/Users/joma/Projects/wotio/nodered-backend/.gitignore",
+		"/Users/joma/Projects/wotio/nodered-backend/node_modules/mongoose/CONTRIBUTING.md",
+		"/Users/joma/Projects/wotio/nodered-backend/package.json",
+		"/Users/joma/Projects/cc/scripts/nova_client.lua",
+		"/Users/joma/Projects/cc/scripts/nova_host.lua"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ssh_passwd",
+			"cmd_shell",
+			"app_settings",
+			"ec2.ResponseError",
+			"ec2",
+			"aws_cfg[\"key_name\"]",
+			"star.origX",
+			"HILITE_TIME",
+			"object",
+			"hiliteInfo",
+			"highlighting",
+			"object",
+			"widget",
+			"hlCircle",
+			"setupShiftColor",
+			"starDisplayGroup",
+			"exploding",
+			"500",
+			"            ",
+			"Star",
+			"star",
+			"obj",
+			"    local rect = {}",
+			"obj",
+			"       \n",
+			"flickerIntensity",
+			"0.9",
+			"local color = self.color",
+			"star",
+			"towards",
+			"None",
+			"pair2",
+			"pair1",
+			" =",
+			"arr",
+			"word_map",
+			"send",
+			"term.write",
+			"setCursorPos"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 188.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "foodtruck.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"mc",
+				"mongoose-connect.js"
+			],
+			[
+				"moc",
+				"mongoose-connect.js"
+			],
+			[
+				".g",
+				".gitignore"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 199.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

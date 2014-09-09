@@ -1,0 +1,15 @@
+# Compiled python
+*.py[cdo]
+
+# Virtualenv
+.Python
+bin/
+include/
+lib/
+man/
+
+#Logging
+*.log
+
+#Sphinx
+docs/build
