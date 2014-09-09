@@ -33,4 +33,6 @@ def create_app(config_from_object=None, config_from_env=None):
   # We'll be mounting our API right on this endpoint here:
   app.register_blueprint(api_blueprint, url_prefix='/'+app.config['API_ENDPOINT'])
 
+  db.init_app(app)
+
   return app
