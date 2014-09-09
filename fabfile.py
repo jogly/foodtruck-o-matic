@@ -5,6 +5,7 @@ env.key_filename = '/Users/joma/.ssh/aws-ec2-01'
 
 project_path = '/home/ubuntu/foodtruck'
 load_data_script = '\\copy foodtruck(location_id, applicant, facility_type, cnn, location_description, address, blocklot, block, lot, permit, status, food_items, x, y, latitude, longitude, schedule_url, noi_sent_on, approved_at, received_at, prior_permit, expires_on) from \'{project_path}/foodtrucks_raw.csv\' DELIMITERS \',\' CSV HEADER;'.format(project_path=project_path)
+uwsgi_log_path = '/var/log/uwsgi'
 
 def shove():
   if has_package('git'):
@@ -59,6 +60,10 @@ def init():
 
       if run('psql -c "{};" foodtruck'.format(load_data_script)).failed:
         abort('failed to load data')
+
+      if not has_directory(uwsgi_log_path):
+        sudo('mkdir -p {}'.format(uwsgi_log_path))
+      sudo('chown -R ubuntu:ubuntu {}'.format(uwsgi_log_path))
 
 def has_package(package):
   with settings(warn_only=True):
