@@ -4,10 +4,12 @@ This module encapsulates a function for the creation of, and attaching of endpoi
 
 
 from flask import Flask
+import logging
 import os
 
 from .data import db
 from .backend import api_blueprint
+from .config import setup_log
 
 def create_app(config_from_object=None, config_from_env=None):
   """A factory function to produce a Flask application instance
@@ -23,7 +25,11 @@ def create_app(config_from_object=None, config_from_env=None):
   Note:
     While both arguments are optional, at least **one** is mandatory.  Otherwise, where will we get our configs??
   """
+  setup_log()
+  log = logging.getLogger(__name__)
+
   app = Flask(__name__)
+
   if config_from_env:
     app.config.from_object(os.environ[config_from_env])
   # While the ENVIRONMENT configures first, the config object can be used to merge and overwrite settings, providing additional flexibility
