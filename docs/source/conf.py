@@ -50,7 +50,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Foodtruck-o-matic'
+project = u'foodtruck-o-matic'
 copyright = u'2014, Joseph Gilley'
 
 # The version info for the project you're documenting, acts as replacement for

@@ -13,6 +13,11 @@ $(document).ready(function(){
     collection: foodtrucks
   });
 
+  // And the search field view
+  var searchView = new ft.AddressSearchView({
+    collection: foodtrucks
+  });
+
   // Do we have geolocation data?
   if ("geolocation" in navigator) {
     console.log('we got you!');

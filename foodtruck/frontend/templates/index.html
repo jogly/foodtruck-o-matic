@@ -24,8 +24,13 @@
         <div class="map-container col-md-8">
         </div>
         <div class="side-bar col-md-4">
-          <h1 id='title'>foodtruck-o-matic</h1>
-          <p class="lead">Find some food-o-matic</p>
+          <h1 id="title" class="text-center">foodtruck-o-matic</h1>
+          <div id="address-search" class="input-group input-group-sm">
+            <input id="address-search-bar" type="text" class="form-control" placeholder="find some food-o-matic (address)">
+            <span class="input-group-btn">
+              <button id="address-search-button" class="btn btn-default" type="button">Yum!</button>
+            </span>
+          </div>
           <ul class="foodtrucks-list">
           </ul>
         </div>
@@ -46,7 +51,34 @@
     <script src="{{url_for('vis.static', filename='js/views.js')}}"></script>
     <script src="{{url_for('vis.static', filename='js/controller.js')}}"></script>
 
-    <script id="template-foodtruck" type="text/html"><li id="<%= id %>" class="foodtruck"><span class="lead"><%= applicant %></span><address><%= address %><p><%= food_items %></p><p><a href="<%= schedule_url %>">schedule</a></p></li></script>
+    <script id="template-foodtruck" type="text/html">
+      <li id="<%= 'ft-' + id %>" class="foodtruck" data-id="<%= id %>">
+        <span class="lead">
+          <% if (!_.isUndefined(applicant)) { %>
+            <%= applicant %>
+          <% } else { %>
+            <%= 'Unknown truck' %>
+          <% } %>
+        </span>
+        <address>
+          <% if (!_.isUndefined(address)) { %>
+            <%= address %>
+          <% } else { %>
+            <%= 'Unknown address' %>
+          <% } %>
+        </address>
+        <p>
+          <% if (!_.isUndefined(food_items)) { %>
+            <%= food_items %>
+          <% } else { %>
+            <%= 'Unknown food items' %>
+          <% } %>
+        </p>
+        <% if (!_.isUndefined(schedule_url)) { %>
+          <p><a href="<%= schedule_url %>">schedule</a></p>
+        <% } %>
+      </li>
+    </script>
 
     <script type="text/javascript">
 
