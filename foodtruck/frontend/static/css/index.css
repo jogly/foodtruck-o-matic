@@ -11,7 +11,7 @@ body {
 }
 
 .side-bar {
-  height: 100%;
+  height: 100vh;
   box-shadow: -4px -10px 40px 2px inset;
   overflow: scroll;
   background-color: #efefef;
