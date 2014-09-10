@@ -81,8 +81,6 @@ ft.AddressSearchView = Backbone.View.extend({
     this.collection = options.collection
   },
   submit: function(e) {
-    alert('submit');
-    console.log(e)
     $(e.currentTarget).addClass('disabled')
     var address = $('#address-search-bar').val()
     var geocoder = new google.maps.Geocoder();
@@ -96,7 +94,9 @@ ft.AddressSearchView = Backbone.View.extend({
           latitude: results[0].geometry.location.lat(),
           longitude: results[0].geometry.location.lng()
         };
-        this.collection.fetch();
+        this.collection.fetch().done(function() {
+
+        });
       } else {
         console.log('errorrrr')
       }
