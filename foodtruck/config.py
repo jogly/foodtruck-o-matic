@@ -35,9 +35,9 @@ class ProductionConfig(Config):
   """No debug mode, that would be unsafe!"""
   SQLALCHEMY_DATABASE_URI = env['DATABASE_URL']
   """Let the production server's environment take care of this setting.  Better to not expose some things."""
-  SERVER_NAME = 'josephgilley.com'
+  #SERVER_NAME = 'josephgilley.com'
   """Used for the generation of URLs by ``url_for``, though it currently isn't being used."""
-  API_ENDPOINT = 'v1'
+  API_ENDPOINT = 'api'
   """Overwrite the endpoing on the production server to represent the version of the api.  The application will be mounted on the sub-domain 'api.' using a production quality HTTP server."""
 
 class DevelopmentConfig(Config):
