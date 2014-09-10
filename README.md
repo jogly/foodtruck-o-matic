@@ -40,16 +40,43 @@ Hosted at http://josephgilley.com, this application presents the user with a sim
 
   PostgreSQL+PostGIS is responsible for storing the data obtained from SF's Foodtruck API. Upon loading the information into the table, a `Geometry(POINT)` field is generated from the `latitude` and `longitude` values and is used by the appplication to source the `/foodtrucks/nearby` REST API call (completely scripted by Fabric, see below).  This allows crazy fast distance selection and sorting (`/foodtrucks/nearby` average <50ms for the entirety of each call)
 
-### Extensions, Tools, and Plugins, oh my
+* HTTP Server: NGINX (as reverse proxy, and as static file host)
+  * _Experience_: **Entry**
+
+    I am accustomed to very simple apache configurations, and the concepts of HTTP servers, including reverse proxies, however I have little system administration experience (and from long ago).
+
+  NGINX provided the application with production quality HTTP reverse proxy-ing and static file hosting.  I chose NGINX over Apache primarily becaues I had never used it and wanted the experience of a slightly different server implementation.
+
+  ***Would do differently***:
+
+    ##### Security
+
+    Due to my limited systems administration experience, very little security is currently implemented on the production server.  A basic security group is applied to the Amazon EC2 instance, and SSH is securely configured to only users with a valid private key.  Otherwise, there is very little protection against API abuse.
+
+    ##### Scalability
+
+    * No cacheing is currently being performed against API requests.  There **definitely** should be.  I would implement a Redis cache service, and cache requests locations.  If I want to be extra sneaky, I would cache locations that are very close together with the same key.  This would mean even **faster** response times and the ability to handle surges for specific address or areas very easily.
+    * No cacheing is currently being performed against static files.  This was part of the initial plan for the project.  This would be simple to set up with Varnish.  I _just_ ran out of time for this piece.  This would be my next priority, since the API calls are fast enough, serving the same javascript files and css over and over is the next largest bottleneck.
+* WSGI Server: Gunicorn
+  * _Experience_: **Entry** _
+
+    This was enormously simple to set up.  Very straightforward local hosting that NGINX forwards upstream to. It would be trivial to alter the NGINX configuration to facilitate a *horizontal scaling* architecture in which Gunicorn is listening on multiple machines (hopefully virtual) locally and NGINX load balances across them.
+
+#### Extensions, Tools, and Plugins, oh my
 
 * Flask-SQLAlchemy + geoalchemy2 + Flask-Migrate (+ Flask-Script)
   * _Experience_: **Entry to Intermediate**
 
-    I have significant experience interfacing with ORM models, enabling a quick understanding of these tools, though specifically I have not used either.
+    I have significant experience interfacing with Java ORM models, which facilitated a quick understanding of these tools, though specifically I have not used either.
 
   These tools were vital to interacting with the PostgreSQL+PostGIS table with abstracted ORMs.  Flask-Migrate (and its dependency Flask-Script) automated the entire database maintenance during development.  During the course of development, over 15 changes were made to the structure of the table, which were all handled seemlessly (almost) using the command line database scripting built-in, allowing less time on DB maintenance and more on code.  Additionally, these tools allowed the publication of the entire app's database to a remote server trivial via Fabric.
 
-  ***Would do differently***: With more time, I would have contributed, or modified, Flask-Migrate to support geoalchemy2 fields.  As it is, each revision had to be made aware of necessary PostGIS index tables and fields.
+  ***Would do differently***: With more time, I would have contributed, or modified, Flask-Migrate to support geoalchemy2 fields.  As it is, each revision had to be made aware of necessary PostGIS index tables and fields, which was trivial but mundane.
+
+* unittest + nose
+  * _Experience_: **Entry to Intermediate** _I am accustomed to unit testing and these utilities, while new to me, followed many best practices that I am already familiar with._
+
+  ***Would do differently:*** More exhaustive unit testing! Specifically I did not test for error responses, but I did test for successful responses.  Since the front-end, at this time, does not utilize the error responses (besides my own silliness during debugging), I deemed this a lower priority.
 
 * Fabric
   * _Experience_: **Entry to Intermediate**
@@ -60,5 +87,22 @@ Hosted at http://josephgilley.com, this application presents the user with a sim
 
   ***Would do differently***: With more time, the other 5% of the server configuration can be automated.  Additionally, there are a number of areas of the application's code that could be improved with more modular settings between environments.
 
+* Sphinx
 
+  Sphinx documentation is available at http://josephgilley.com/doc/
+  * _Experience_: **Entry**
+
+    A very flexible documentation processor, an understanding of other doc processors made the adoption trivial.
+
+### Front-end
+
+* Mostly JavaScript
+  * _Experience_: **Entry to Intermediate**.  _Tends towards Intermediate, but rustiness in the object model makes me humble_
+
+  Being a single page app puts most of the work of interactivity and dynamism on scripting.  Pretty straightforward here.
+
+* MVC: Backbone.js
+  * _Experience_: **Entry** _I am very familiar with the concepts of MVC, and the programming model that arises from its practice, so the adoption of this technology was trivial after climbing the learning curve and understanding a number of *gotchas*._
+
+  ***Would do differently***: With more time, I am certain that separation of some pieces of logic can be improved.  With the time constraints, I chose on seldom occasions to _cheat_ a little by generating model events from within a view.  I could also do with some signals from the `GoogleMapView` to the collections model to keep track of what is highlighted on the map (just a usability feature, reall).
 
