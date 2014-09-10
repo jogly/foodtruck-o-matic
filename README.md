@@ -49,11 +49,11 @@ Hosted at http://josephgilley.com, this application presents the user with a sim
 
   ***Would do differently***:
 
-    ##### Security
+    #### Security
 
     Due to my limited systems administration experience, very little security is currently implemented on the production server.  A basic security group is applied to the Amazon EC2 instance, and SSH is securely configured to only users with a valid private key.  Otherwise, there is very little protection against API abuse.
 
-    ##### Scalability
+    #### Scalability
 
     * No cacheing is currently being performed against API requests.  There **definitely** should be.  I would implement a Redis cache service, and cache requests locations.  If I want to be extra sneaky, I would cache locations that are very close together with the same key.  This would mean even **faster** response times and the ability to handle surges for specific address or areas very easily.
     * No cacheing is currently being performed against static files.  This was part of the initial plan for the project.  This would be simple to set up with Varnish.  I _just_ ran out of time for this piece.  This would be my next priority, since the API calls are fast enough, serving the same javascript files and css over and over is the next largest bottleneck.
