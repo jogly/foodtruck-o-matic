@@ -1,7 +1,6 @@
 """
 This module contains all of the routes for the backend API.
 """
-
 from decimal import Decimal
 from flask import Blueprint, request, jsonify
 
@@ -20,7 +19,7 @@ def list():
     ``JSONObject('foodtrucks', JSONArray(Foodtruck))``
   """
   trucks = Foodtruck.query.all()
-  return jsonify(foodtrucks=[truck.to_json() for truck in trucks])
+  return jsonify(foodtrucks=[truck.to_dict() for truck in trucks])
 
 @api.route('/foodtrucks/nearby', methods=['GET'])
 def nearby():
@@ -57,11 +56,11 @@ def nearby():
   if limit: limit = int(limit)
 
   per_page = request.args.get('per_page') or limit
-  if per_page: per_page = int(per_page)
+  if per_page:
+    per_page = int(per_page)
   # If limit is not specified (None), and per_page is not specified (None) we won't paginate a thing.
 
-  page_num = (request.args.get('page_num') or 1)
-  if page_num: page_num = int(page_num) - 1
+  page_num = int(request.args.get('page_num') or 1)
   # Offset math requires this value to be zero-indexed. But humans don't really do that.
 
   trucks_query = Foodtruck.query
@@ -71,12 +70,10 @@ def nearby():
   if per_page:
     # Oh, ok, we're paginating
     trucks_query = trucks_query.limit(per_page)
-    if page_num:
-      # AND we want a specific page.
-      trucks_query = trucks_query.offset(per_page * page_num)
+    trucks_query = trucks_query.offset(per_page * (page_num-1))
 
   # Send it home
-  return jsonify(foodtrucks=[truck.to_json() for truck in trucks_query])
+  return jsonify(foodtrucks=[truck.to_dict() for truck in trucks_query])
 
 
 @api.route('/foodtrucks/<int:foodtruck_id>', methods=['GET'])
@@ -89,10 +86,9 @@ def show(foodtruck_id):
     foodtruck_id (int): The ID of the Truck resource as provided in any other Truck resource endpoint.
   """
   truck = Foodtruck.query.get(foodtruck_id)
-  if truck:
-    return jsonify(truck.to_json())
-  else:
+  if not truck:
     raise ResourceNotFound('Foodtruck with {{id:{}}} does not exist.'.format(foodtruck_id))
+  return jsonify(truck.to_dict())
 
 @api.errorhandler(ResourceNotFound)
 @api.errorhandler(MissingParameter)
@@ -100,6 +96,6 @@ def show(foodtruck_id):
 def handle_error(error):
   """The API error handler processes each error the API can throw and responds accordingly, automatically setting the status_code provided by the error class.  This method is not invoked directly, but a hook into Flask's error handling.  Nothing to do here.
   """
-  response = jsonify(error.to_json())
+  response = jsonify(error.to_dict())
   response.status_code = error.status_code
   return response

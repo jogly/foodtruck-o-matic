@@ -7,6 +7,8 @@ from geoalchemy2 import Geometry
 
 from foodtruck.data import db
 
+import ujson
+
 class Foodtruck(db.Model):
   """
   The fabled Foodtruck model.  This model simultaneously defines our table in the database, is a source of our migration logic (not the same), and is an object to use and abuse in processing requests.  Each field is derived from the SF Foodtruck data source and manipulated a little bit to fit in syntactically, except for the unique ID which is auto-incremented.  The SF Foodtruck data does not have a single unique key and this is simpler than creating a multi-field key.
@@ -51,34 +53,15 @@ class Foodtruck(db.Model):
   P.S. It's not magic, its the good work of the extension geoalchemy2
   """
 
-  def to_json(self):
+  def to_dict(self):
     """
-    This is the synthetic interface that this application's models use to aid JSON serialization.  This method will create a `dict` that can be used by Flask's jsonify.  Importantly, it will not create keys for values the model considers null, maintaining the JSON spec.
+    This is the synthetic interface that this application's models use to aid JSON serialization.  This method will create a `dict` that can be used by Flask's jsonify (with the UltraJSONEncoder subclass we defined).  Importantly, it will not create keys for values the model considers null, maintaining the JSON spec.  Normally this would go into a BaseClassModel that we define, so all our Models could have this method, but there's only one model in this application so we'll be fine leaving this guy here for now.  YAGNI methodology applies here.
 
     Returns:
       ``dict``
     """
-    truck = {}
-    if self.id:	truck['id'] = self.id
-    if self.location_id:	truck['location_id'] = self.location_id
-    if self.applicant:	truck['applicant'] = self.applicant
-    if self.facility_type:	truck['facility_type'] = self.facility_type
-    if self.cnn:	truck['cnn'] = self.cnn
-    if self.location_description:	truck['location_description'] = self.location_description
-    if self.address:	truck['address'] = self.address
-    if self.blocklot:	truck['blocklot'] = self.blocklot
-    if self.block:	truck['block'] = self.block
-    if self.lot:	truck['lot'] = self.lot
-    if self.permit:	truck['permit'] = self.permit
-    if self.status:	truck['status'] = self.status
-    if self.food_items:	truck['food_items'] = self.food_items
-    if self.x:	truck['x'] = self.x
-    if self.y:	truck['y'] = self.y
-    if self.latitude:	truck['latitude'] = str(self.latitude)
-    if self.longitude:	truck['longitude'] = str(self.longitude)
-    if self.schedule_url:	truck['schedule_url'] = self.schedule_url
-    if self.approved_at:	truck['approved_at'] = self.approved_at.isoformat()
-    if self.received_at:	truck['received_at'] = self.received_at.isoformat()
-    if self.prior_permit:	truck['prior_permit'] = self.prior_permit
-    if self.expires_on:	truck['expires_on'] = self.expires_on.isoformat()
-    return truck;
+    d = {}
+    for column in self.__table__.columns:
+      d[column.name] = getattr(self, column.name)
+
+    return d
