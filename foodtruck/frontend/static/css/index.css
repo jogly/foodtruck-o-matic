@@ -6,6 +6,10 @@ body {
   height: 100vh;
 }
 
+#title {
+  margin: 10px;
+}
+
 .map-container {
   height: 100vh;
 }
@@ -26,4 +30,8 @@ body {
 
 .selected {
   background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(30, 144, 255, 0.3))
+}
+
+.links {
+  margin-bottom: 10px;
 }
