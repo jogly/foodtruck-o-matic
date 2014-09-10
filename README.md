@@ -96,10 +96,14 @@ Hosted at http://josephgilley.com, this application presents the user with a sim
 
 ### Front-end
 
-* Mostly JavaScript
+* Mostly JavaScript (also basic HTML5 and CSS3)
   * _Experience_: **Entry to Intermediate**.  _Tends towards Intermediate, but rustiness in the object model makes me humble_
 
   Being a single page app puts most of the work of interactivity and dynamism on scripting.  Pretty straightforward here.
+
+* CSS Bootstrapped: **Intermediate** _Not too much this tech.  Include and use._
+
+  http://getbootstrap.com
 
 * MVC: Backbone.js
   * _Experience_: **Entry** _I am very familiar with the concepts of MVC, and the programming model that arises from its practice, so the adoption of this technology was trivial after climbing the learning curve and understanding a number of *gotchas*._
