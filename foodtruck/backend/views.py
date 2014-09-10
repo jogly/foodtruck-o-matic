@@ -39,11 +39,19 @@ def nearby():
 
   # Pull up all the query parameters to see what we're dealing with
   # We'll be flexible with the naming, typing all those letters is hard
+  # Generate some API errors if our conditions are not satisfied.
   lat = request.args.get('latitude') or request.args.get('lat')
-  if lat: lat = Decimal(lat)
+  if lat:
+    lat = Decimal(lat)
+  else:
+    raise MissingParameter('latitude')
 
   lon = request.args.get('longitude') or request.args.get('lon')
-  if lon: lon = Decimal(lon)
+  if lon:
+    lon = Decimal(lon)
+  else:
+    raise MissingParameter('longitude')
+
 
   limit = request.args.get('limit')
   if limit: limit = int(limit)
@@ -55,12 +63,6 @@ def nearby():
   page_num = (request.args.get('page_num') or 1)
   if page_num: page_num = int(page_num) - 1
   # Offset math requires this value to be zero-indexed. But humans don't really do that.
-
-  # Generate some API errors if our conditions are not satisfied.
-  if lat is None:
-    raise MissingParameter('latitude')
-  elif lon is None:
-    raise MissingParameter('longitude')
 
   trucks_query = Foodtruck.query
   trucks_query = trucks_query.order_by(Foodtruck.location.distance_box('POINT({lat} {lon})'.format(lat=lat, lon=lon)))
