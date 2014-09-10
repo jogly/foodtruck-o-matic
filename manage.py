@@ -3,7 +3,7 @@ from flask.ext.migrate import Migrate, MigrateCommand
 
 from foodtruck import create_app, db
 
-app = create_app(config_from_env='APP_SETTINGS')
+application = create_app(config_from_env='APP_SETTINGS')
 
 migrate = Migrate(app, db)
 manager = Manager(app)

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Foodtruck-o-matic</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ url_for('vis.static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('vis.static', filename='css/index.css') }}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class=".container-fluid">
+      <div id="main-row" class="row">
+        <div class="map-container col-md-8">
+        </div>
+        <div class="side-bar col-md-4">
+          <h1 id='title'>foodtruck-o-matic</h1>
+          <p class="lead">Find some food-o-matic</p>
+          <ul class="foodtrucks-list">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <!-- Javascript libraries here we come! -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-OFrO8m78dQD98o6ZiSMMhg_JwIdpg74"> </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <!-- Include individual files as needed -->
+    <script src="{{url_for('vis.static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/models.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/collections.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/views.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/controller.js')}}"></script>
+
+    <script id="template-foodtruck" type="text/html"><li id="<%= id %>" class="foodtruck"><span class="lead"><%= applicant %></span><address><%= address %><p><%= food_items %></p><p><a href="<%= schedule_url %>">schedule</a></p></li></script>
+
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>

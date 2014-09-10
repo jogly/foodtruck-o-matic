@@ -9,6 +9,7 @@ import os
 
 from .data import db
 from .backend import api_blueprint
+from .frontend import frontend_blueprint
 from .config import setup_log
 
 def create_app(config_from_object=None, config_from_env=None):
@@ -38,6 +39,7 @@ def create_app(config_from_object=None, config_from_env=None):
 
   # We'll be mounting our API right on this endpoint here:
   app.register_blueprint(api_blueprint, url_prefix='/'+app.config['API_ENDPOINT'])
+  app.register_blueprint(frontend_blueprint)
 
   db.init_app(app)
 
