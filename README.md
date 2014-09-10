@@ -108,5 +108,8 @@ Hosted at http://josephgilley.com, this application presents the user with a sim
 * MVC: Backbone.js
   * _Experience_: **Entry** _I am very familiar with the concepts of MVC, and the programming model that arises from its practice, so the adoption of this technology was trivial after climbing the learning curve and understanding a number of *gotchas*._
 
-  ***Would do differently***: With more time, I am certain that separation of some pieces of logic can be improved.  With the time constraints, I chose on seldom occasions to _cheat_ a little by generating model events from within a view.  I could also do with some signals from the `GoogleMapView` to the collections model to keep track of what is highlighted on the map (just a usability feature, reall).
+  ***Would do differently***:
+    * With more time, I am certain that separation of some pieces of logic can be improved.  With the time constraints, I chose on seldom occasions to _cheat_ a little by generating model events from within a view.  I could also do with some signals from the `GoogleMapView` to the collections model to keep track of what is highlighted on the map (just a usability feature, reall).
+    * And of course automate the front-end testing.
+
 
