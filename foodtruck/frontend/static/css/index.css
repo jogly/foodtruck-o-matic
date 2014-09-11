@@ -21,7 +21,7 @@ html, body {
   height: 100vh;
 }
 
-.map-canvasx {
+.map-canvas {
   position: relative;
   left: 15px;
   height: 100vh;

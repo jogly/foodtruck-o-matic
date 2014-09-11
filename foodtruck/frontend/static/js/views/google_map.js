@@ -57,7 +57,7 @@ ft.GoogleMapView = Backbone.View.extend({
   _show_infoWindow: function(model) {
     this._infoWindow.open(this._map, this._markers[model.id]);
 
-    var html = $('#template-foodtruck').html();
+    var html = $('#template-foodtruck-blurb').html();
     this._infoWindow.setContent(_.template(html)(model.attributes));
   }
 });

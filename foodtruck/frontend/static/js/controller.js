@@ -23,7 +23,7 @@ $(document).ready(function(){
 
   // The search view only needs its SearchResults model
   var searchView = new ft.AddressSearchView({
-    model: foodtrucks
+    model: coordModel
   });
 
   // Do we have geolocation data?

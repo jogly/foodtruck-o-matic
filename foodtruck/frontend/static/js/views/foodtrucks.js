@@ -32,7 +32,7 @@ ft.FoodtrucksView = Backbone.View.extend({
   },
   select: function(model) {
     $('li.foodtruck').removeClass('selected');
-    $(this._modelViews[model.id].el).addClass('selected');
+    $('#ft-'+model.id).addClass('selected');
   },
   itemClicked: function(e) {
     var id = $(e.currentTarget).data('id');

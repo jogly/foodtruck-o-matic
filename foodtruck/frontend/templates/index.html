@@ -80,5 +80,11 @@
         <p><a href="<%= schedule_url %>">schedule</a></p>
       </li>
     </script>
+    <script id="template-foodtruck-blurb" type="text/html">
+      <li id="<%= 'ft-blurb-' + id %>" class="foodtruck" data-id="<%= id %>">
+        <span class="lead"><%= applicant %></span>
+        <address><%= address %></address>
+      </li>
+    </script>
   </body>
 </html>
