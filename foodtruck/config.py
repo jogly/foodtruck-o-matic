@@ -1,5 +1,7 @@
 """
-This module defines the various configuration layouts as Python class objects.  By extending the base class' default values, multiple definitions depending on the environment are created.
+This module defines the various configuration layouts as Python class objects.
+By extending the base class' default values, multiple definitions depending on
+the environment are created.
 """
 
 import os
@@ -10,7 +12,8 @@ from datetime import timedelta
 
 class Config:
   """
-  The base configuration class.  It *can* stand on its own, as a very minimal set up.
+  The base configuration class.  It *can* stand on its own, as a very minimal
+  set up.
   """
   DEBUG = False
   """Flask standard setting"""
@@ -19,12 +22,17 @@ class Config:
   SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/foodtruck'
   """Flask-SQLAlchemy standard setting
 
-  This is the database URI that the app will be configured with.  DB foodtruck must exist.
+  This is the database URI that the app will be configured with.  DB foodtruck
+  must exist.
   """
   API_ENDPOINT = 'api'
   """This specifies where the api Blueprint will be mounted.
 
-  This configuration affords a great deal of flexibility, primarily for the production server.  This will let us mount multiple apis to the same domain, but maintian logical code separation.  Additionally, one could version the API being mounted, to preserve deprecated APIs for backwards compatibility.
+  This configuration affords a great deal of flexibility, primarily for the
+  production server.  This will let us mount multiple apis to the same
+  domain, but maintian logical code separation.  Additionally, one could
+  version the API being mounted, to preserve deprecated APIs for backwards
+  compatibility.
   """
 
 class ProductionConfig(Config):
@@ -34,15 +42,22 @@ class ProductionConfig(Config):
   DEBUG = False
   """No debug mode, that would be unsafe!"""
   SQLALCHEMY_DATABASE_URI = env['DATABASE_URL']
-  """Let the production server's environment take care of this setting.  Better to not expose some things."""
+  """Let the production server's environment take care of this setting.  Better
+  to not expose some things."""
   #SERVER_NAME = 'josephgilley.com'
-  """Used for the generation of URLs by ``url_for``, though it currently isn't being used."""
+  """Used for the generation of URLs by ``url_for``, though it currently isn't
+  being used."""
   API_ENDPOINT = 'api'
-  """Overwrite the endpoing on the production server to represent the version of the api.  The application will be mounted on the sub-domain 'api.' using a production quality HTTP server."""
+  """Overwrite the endpoing on the production server to represent the version
+  of the api.  The application will be mounted on the sub-domain 'api.' using a
+  production quality HTTP server."""
 
 class DevelopmentConfig(Config):
   """
-  This is the configuration one would use on their local machine for development.  It provides the most generous of runtimes, allowing in-browser debugging, and logging Flask-SQLAlchemy SQL queries (useful for gauging a request's impact)
+  This is the configuration one would use on their local machine for
+  development.  It provides the most generous of runtimes, allowing in-browser
+  debugging, and logging Flask-SQLAlchemy SQL queries (useful for gauging a
+  request's impact)
   """
   DEVELOPMENT = True
   DEBUG = True
@@ -51,19 +66,31 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
   """
-  This is the configuration used by the test environment.  Technically, it should use a separate database, populated with more corner-case reaching test data.  However, the early stages of this application does not mutate any existing data, so we can get away with testing on our development database for now.
+  This is the configuration used by the test environment.  Technically, it
+  should use a separate database, populated with more corner-case reaching test
+  data.  However, the early stages of this application does not mutate any
+  existing data, so we can get away with testing on our development database
+  for now.
   """
   TESTING = True
   SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/foodtruck'
-  """This should not be the same as the development server, and **definitely** not the production database server.  But we're being sneaky for now"""
+  """This should not be the same as the development server, and **definitely**
+  not the production database server.  But we're being sneaky for now"""
 
 def setup_log(config_path='logging.yaml'):
-  """Taking the path of a logging configuration file, this function will set up the Python logging utility as prescribed
+  """Taking the path of a logging configuration file, this function will set up
+  the Python logging utility as prescribed
 
-  This method supports the configuration file being ``json`` or ``yaml``.  For lack of a separate designated logging module, this function will belong in this module for now.  Also, it would be better for the configuration classes to own the path of which configuration file (Testing, Development, Prod, etc.) to use for set up.
+  This method supports the configuration file being ``json`` or ``yaml``.  For
+  lack of a separate designated logging module, this function will belong in
+  this module for now.  Also, it would be better for the configuration classes
+  to own the path of which configuration file (Testing, Development, Prod,
+  etc.) to use for set up.
 
   Args:
-    config_path (str, optional): The path to the logging file, relative to the config file, not the calling file.  The file extension determines whether the file will be ``json`` or ``yaml``.
+    config_path (str, optional): The path to the logging file, relative to the
+      config file, not the calling file.  The file extension determines whether
+      the file will be ``json`` or ``yaml``.
 
   """
   if os.path.exists(config_path):

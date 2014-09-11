@@ -72,7 +72,10 @@ Hosted at http://josephgilley.com, this application presents the user with a sim
 
   These tools were vital to interacting with the PostgreSQL+PostGIS table with abstracted ORMs.  Flask-Migrate (and its dependency Flask-Script) automated the entire database maintenance during development.  During the course of development, over 15 changes were made to the structure of the table, which were all handled seemlessly (almost) using the command line database scripting built-in, allowing less time on DB maintenance and more on code.  Additionally, these tools allowed the publication of the entire app's database to a remote server trivial via Fabric.
 
-  ***Would do differently***: With more time, I would have contributed, or modified, Flask-Migrate to support geoalchemy2 fields.  As it is, each revision had to be made aware of necessary PostGIS index tables and fields, which was trivial but mundane.
+  ***Would do differently***:
+    * With more time, I would have contributed, or modified, Flask-Migrate to support geoalchemy2 fields.  As it is, each revision had to be made aware of necessary PostGIS index tables and fields, which was trivial but mundane.
+
+    * Should the number of models increase, I would pull out the common methods like ``to_dict`` into a ``BaseModel`` class that these would then extend.
 
 * unittest + nose
   * _Experience_: **Entry to Intermediate** _I am accustomed to unit testing and these utilities, while new to me, followed many best practices that I am already familiar with._

@@ -1,10 +1,11 @@
 import flask
 import unittest
 import logging
-import json
+import ujson as json
 from decimal import Decimal
 from foodtruck import create_app, db, setup_log
 from foodtruck.backend import Foodtruck
+from foodtruck.backend.models import columns
 
 class FoodtruckTestCase(unittest.TestCase):
 
@@ -50,8 +51,15 @@ class FoodtruckTestCase(unittest.TestCase):
     self.assertIn('id', data)
     self.assertEqual(data['id'], self.truck.id)
 
+  def test_single_contents(self):
+    rv = self.client.get('/api/foodtrucks/{}'.format(self.truck.id))
+    data = json.loads(rv.data)
+    for column in columns(Foodtruck):
+      self.assertIn(column, data)
+
   def test_nearest_basic(self):
-    rv = self.client.get('/api/foodtrucks/nearby?lat={lat}&lon={lon}'.format(**self.loc))
+    rv = self.client.get('/api/foodtrucks/nearby?lat={lat}&lon={lon}'
+                         .format(**self.loc))
     data = json.loads(rv.data)
 
     self.assertIn('foodtrucks', data)
@@ -59,7 +67,8 @@ class FoodtruckTestCase(unittest.TestCase):
     self.assertEqual(data['foodtrucks'][0]['id'], self.truck.id)
 
   def test_nearest_aliases(self):
-    rv = self.client.get('/api/foodtrucks/nearby?latitude={lat}&longitude={lon}'.format(**self.loc))
+    rv = self.client.get('/api/foodtrucks/nearby?latitude={lat}&longitude={lon}'
+                         .format(**self.loc))
     data = json.loads(rv.data)
 
     self.assertIn('foodtrucks', data)
