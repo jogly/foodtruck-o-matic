@@ -7,8 +7,12 @@
     <title>Foodtruck-o-matic</title>
 
     <!-- Bootstrap -->
-    <link href="{{ url_for('vis.static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('vis.static', filename='css/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('vis.static', filename='css/bootstrap.min.css') }}"
+      rel="stylesheet">
+    <link href="{{ url_for('vis.static', filename='css/index.css') }}"
+      rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:300'
+      rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,16 +25,18 @@
 
     <div class=".container-fluid">
       <div id="main-row" class="row">
-        <div class="map-container col-md-8">
+        <div class="col-md-8 col-sm-8 no-padding">
+          <div class="map-canvas">
+          </div>
         </div>
-        <div class="side-bar col-md-4">
+        <div class="col-md-4 col-sm-4 side-bar">
           <h1 id="title" class="text-center">foodtruck-o-matic</h1>
           <div class="links row">
             <div class="col-md-6 text-center">
-              <a href="http://josephgilley.com/doc/">documentation</a>
+              <a href="http://github.com/joegilley/foodtruck-o-matic/">github</a>
             </div>
             <div class="col-md-6 text-center">
-              <a href="http://github.com/joegilley/foodtruck-o-matic/">github</a>
+              <a href="http://josephgilley.com/doc/">documentation</a>
             </div>
           </div>
           <div id="address-search" class="input-group input-group-sm">
@@ -47,49 +53,32 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
     <!-- Javascript libraries here we come! -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHTm_-SolRwbEhFIIFMPDt95bCWhF24lo"> </script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
     <!-- Include individual files as needed -->
     <script src="{{url_for('vis.static', filename='js/bootstrap.min.js')}}"></script>
     <script src="{{url_for('vis.static', filename='js/main.js')}}"></script>
-    <script src="{{url_for('vis.static', filename='js/models.js')}}"></script>
-    <script src="{{url_for('vis.static', filename='js/collections.js')}}"></script>
-    <script src="{{url_for('vis.static', filename='js/views.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/models/foodtruck.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/models/address_result.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/collections/foodtrucks.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/views/address_search.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/views/foodtruck.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/views/foodtrucks.js')}}"></script>
+    <script src="{{url_for('vis.static', filename='js/views/google_map.js')}}"></script>
     <script src="{{url_for('vis.static', filename='js/controller.js')}}"></script>
 
+    <!-- HTML Template elements; used by Backbone.js Views -->
     <script id="template-foodtruck" type="text/html">
       <li id="<%= 'ft-' + id %>" class="foodtruck" data-id="<%= id %>">
-        <span class="lead">
-          <% if (!_.isUndefined(applicant)) { %>
-            <%= applicant %>
-          <% } else { %>
-            <%= 'Unknown truck' %>
-          <% } %>
-        </span>
-        <address>
-          <% if (!_.isUndefined(address)) { %>
-            <%= address %>
-          <% } else { %>
-            <%= 'Unknown address' %>
-          <% } %>
-        </address>
-        <p>
-          <% if (!_.isUndefined(food_items)) { %>
-            <%= food_items %>
-          <% } else { %>
-            <%= 'Unknown food items' %>
-          <% } %>
-        </p>
-        <% if (!_.isUndefined(schedule_url)) { %>
-          <p><a href="<%= schedule_url %>">schedule</a></p>
-        <% } %>
+        <span class="lead"><%= applicant %></span>
+        <address><%= address %></address>
+        <p><%= food_items %></p>
+        <p><a href="<%= schedule_url %>">schedule</a></p>
       </li>
-    </script>
-
-    <script type="text/javascript">
-
     </script>
   </body>
 </html>
