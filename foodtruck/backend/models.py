@@ -60,8 +60,5 @@ class Foodtruck(db.Model):
     Returns:
       ``dict``
     """
-    d = {}
-    for column in self.__table__.columns:
-      d[column.name] = getattr(self, column.name)
-
-    return d
+    columns = self.__table__.columns
+    return {column.name : getattr(self, column.name) for column in columns}
