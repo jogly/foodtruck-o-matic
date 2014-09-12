@@ -7,6 +7,8 @@ ft.GoogleMapView = Backbone.View.extend({
     this.listenTo(this.collection, 'add', this.add);
     this.listenTo(this.collection, 'remove', this.remove);
     this.listenTo(this.collection, 'change:selection', this.select);
+    this.listenTo(this.collection, 'done', this.render);
+    this.listenTo(this.collection.coordModel, 'change', this.render);
 
     // Nothing to do yet, but hold onto a `InfoWindow` for later
     this._infoWindow = new google.maps.InfoWindow({
@@ -50,9 +52,21 @@ ft.GoogleMapView = Backbone.View.extend({
     this._show_infoWindow(model)
   },
   render: function() {
-    this._map.panTo(new google.maps.LatLng(
+    var center = new google.maps.LatLng(
       this.collection.coordModel.get('latitude'),
-      this.collection.coordModel.get('longitude')));
+      this.collection.coordModel.get('longitude'));
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(center);
+    for (var i=0; i<this.collection.models.length; i++) {
+      model = this.collection.models[i];
+      console.log('found');
+      var modelLoc = new google.maps.LatLng(
+        model.get('latitude'),
+        model.get('longitude'));
+      bounds.extend(modelLoc);
+    }
+
+    this._map.fitBounds(bounds);
   },
   _show_infoWindow: function(model) {
     this._infoWindow.open(this._map, this._markers[model.id]);

@@ -35,11 +35,15 @@ ft.Foodtrucks = Backbone.Collection.extend({
     //large.
     // If the API supported a distance field, we could use a custom comparator
     //and this would be more efficient
+    var self = this;
     this.set();
     this.fetch({
       error: function(col, res, opt) {
         console.log('Error fetching foodtrucks: %o', res);
+      },
+      success: function(col, res, opt) {
+        col.trigger('done');
       }
-    });
+    })
   }
 });
