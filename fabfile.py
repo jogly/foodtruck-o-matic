@@ -56,9 +56,9 @@ def init():
 
       sudo('psql -c "CREATE EXTENSION postgis;" foodtruck', user='postgres')
 
-      run('psql -d foodtruck -c "update foodtruck set location = ST_GeomFromText(\'POINT(\' || latitude || \' \' || longitude || \')\', 4326)"')
-
       run('source bin/activate && python manage.py db upgrade')
+
+      run('psql -d foodtruck -c "update foodtruck set location = ST_GeomFromText(\'POINT(\' || latitude || \' \' || longitude || \')\', 4326)"')
 
       if run('psql -c "{};" foodtruck'.format(load_data_script)).failed:
         abort('failed to load data')
