@@ -12,7 +12,8 @@ ft.GoogleMapView = Backbone.View.extend({
 
     // Nothing to do yet, but hold onto a `InfoWindow` for later
     this._infoWindow = new google.maps.InfoWindow({
-      content: 'oops'
+      content: 'oops',
+      maxWidth: 300
     });
 
     // Initialize the map
@@ -56,7 +57,7 @@ ft.GoogleMapView = Backbone.View.extend({
       this.collection.coordModel.get('latitude'),
       this.collection.coordModel.get('longitude'));
     var bounds = new google.maps.LatLngBounds();
-    bounds.extend(center);
+    // bounds.extend(center);
     for (var i=0; i<this.collection.models.length; i++) {
       model = this.collection.models[i];
       console.log('found');

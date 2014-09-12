@@ -13,6 +13,7 @@ ft.FoodtrucksView = Backbone.View.extend({
     this.listenTo(this.collection, 'add', this.add);
     this.listenTo(this.collection, 'remove', this.remove);
     this.listenTo(this.collection, 'change:selection', this.select);
+    this.listenTo(this.collection, 'done', this.selectFirst);
     // Hash to hold the sub views
     this._modelViews = {};
   },
@@ -33,6 +34,9 @@ ft.FoodtrucksView = Backbone.View.extend({
   select: function(model) {
     $('li.foodtruck').removeClass('selected');
     $('#ft-'+model.id).addClass('selected');
+  },
+  selectFirst: function() {
+    this.collection.trigger('change:selection', this.collection.models[0]);
   },
   itemClicked: function(e) {
     var id = $(e.currentTarget).data('id');
